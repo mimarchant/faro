@@ -1,0 +1,111 @@
+:root {
+  --bg: #0a0e15;
+  --bg-elev: #10161f;
+  --card: #131b26;
+  --card-2: #0e151e;
+  --border: rgba(120, 140, 165, 0.14);
+  --border-strong: rgba(120, 140, 165, 0.28);
+  --text: #e7eef6;
+  --dim: #8a97a8;
+  --faint: #586473;
+  --accent: #2dd4bf;
+  --accent-dim: rgba(45, 212, 191, 0.12);
+  --good: #0cce6b;
+  --avg: #ffa400;
+  --poor: #ff4e42;
+  --radius: 16px;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: var(--bg);
+}
+
+body {
+  font-family: 'Hanken Grotesk', sans-serif;
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* atmósfera de fondo */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(900px 500px at 75% -10%, rgba(45, 212, 191, 0.1), transparent 60%),
+    radial-gradient(700px 400px at 10% 0%, rgba(56, 120, 200, 0.08), transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(120, 140, 165, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 140, 165, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, black, transparent 85%);
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 85%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+
+/* utilidades compartidas */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: rise 0.55s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.section-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  margin: 34px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--faint);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  padding: 3px 8px;
+  border-radius: 6px;
+}

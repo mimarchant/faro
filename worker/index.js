@@ -1,6 +1,3 @@
-// Backend del Worker. Sirve la SPA (binding ASSETS) y expone /api/analyze,
-// que llama a PageSpeed Insights usando la API key guardada como secret (env.PSI_KEY).
-
 const PSI_ENDPOINT = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed'
 const CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo']
 

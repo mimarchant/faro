@@ -1,6 +1,5 @@
 <script setup>
 const url = defineModel('url')
-const apiKey = defineModel('apiKey')
 
 defineProps({
   loading: Boolean,
@@ -11,47 +10,21 @@ const emit = defineEmits(['run'])
 
 <template>
   <div class="panel">
-    <div>
-      <label class="field-label">URL a analizar</label>
-      <div class="url-row">
-        <input
-          class="input"
-          v-model="url"
-          @keyup.enter="emit('run')"
-          placeholder="https://www.consorcio.cl"
-          autocomplete="off"
-          spellcheck="false"
-        />
-        <button class="run-btn" @click="emit('run')" :disabled="loading">
-          {{ loading ? 'Analizando…' : 'Analizar' }}
-        </button>
-      </div>
-      <p class="hint">Se analizan móvil y escritorio a la vez.</p>
+    <label class="field-label">URL a analizar</label>
+    <div class="url-row">
+      <input
+        class="input"
+        v-model="url"
+        @keyup.enter="emit('run')"
+        placeholder="https://www.consorcio.cl"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button class="run-btn" @click="emit('run')" :disabled="loading">
+        {{ loading ? 'Analizando…' : 'Analizar' }}
+      </button>
     </div>
-
-    <details class="keyfield">
-      <summary>API key (opcional, recomendada)</summary>
-      <div class="key-body">
-        <input
-          class="input"
-          v-model="apiKey"
-          placeholder="AIza…  ·  se guarda solo en memoria de esta pestaña"
-          autocomplete="off"
-          spellcheck="false"
-          style="width: 100%"
-        />
-        <p>
-          Sin key funciona, pero Google limita mucho la cuota (errores 429 frecuentes). Crea una
-          gratis en
-          <a
-            href="https://developers.google.com/speed/docs/insights/v5/get-started"
-            target="_blank"
-            rel="noopener"
-            >Google Cloud → PageSpeed Insights API</a
-          >.
-        </p>
-      </div>
-    </details>
+    <p class="hint">Se analizan móvil y escritorio a la vez.</p>
   </div>
 </template>
 
@@ -61,8 +34,6 @@ const emit = defineEmits(['run'])
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 22px;
-  display: grid;
-  gap: 16px;
 }
 
 .field-label {
@@ -109,7 +80,7 @@ const emit = defineEmits(['run'])
 .hint {
   font-size: 12px;
   color: var(--faint);
-  margin-top: 8px;
+  margin-top: 10px;
   font-family: 'JetBrains Mono', monospace;
 }
 
@@ -142,51 +113,6 @@ const emit = defineEmits(['run'])
 .run-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-.keyfield summary {
-  cursor: pointer;
-  color: var(--faint);
-  font-size: 12px;
-  font-family: 'JetBrains Mono', monospace;
-  list-style: none;
-  user-select: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.keyfield summary::-webkit-details-marker {
-  display: none;
-}
-
-.keyfield summary::before {
-  content: '▸';
-  transition: transform 0.2s;
-  display: inline-block;
-}
-
-.keyfield[open] summary::before {
-  transform: rotate(90deg);
-}
-
-.keyfield .key-body {
-  margin-top: 12px;
-}
-
-.keyfield p {
-  font-size: 12.5px;
-  color: var(--dim);
-  margin-top: 8px;
-}
-
-.keyfield a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.keyfield a:hover {
-  text-decoration: underline;
 }
 
 @media (max-width: 560px) {

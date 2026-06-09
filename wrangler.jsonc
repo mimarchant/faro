@@ -4,9 +4,16 @@
   "main": "./worker/index.js",
   "assets": {
     "binding": "ASSETS",
-    "not_found_handling": "single-page-application"
+    "not_found_handling": "single-page-application",
   },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "faro-db",
+      "database_id": "b7663d7a-8bb9-4162-876a-b8e092f19eb0",
+    },
+  ],
   "observability": {
-    "enabled": true
-  }
+    "enabled": true,
+  },
 }

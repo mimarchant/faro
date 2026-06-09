@@ -1,0 +1,4 @@
+# Copia este archivo a .dev.vars (que está en .gitignore) y pon tu key real.
+# El plugin de Cloudflare lee .dev.vars y lo expone como env.PSI_KEY en el Worker
+# durante `npm run dev`.
+PSI_KEY=tu_api_key_de_pagespeed_aqui

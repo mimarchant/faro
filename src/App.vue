@@ -8,7 +8,6 @@ import ExportCard from './components/ExportCard.vue'
 
 const {
   url,
-  apiKey,
   view,
   loading,
   generalError,
@@ -34,7 +33,7 @@ const {
     </p>
   </header>
 
-  <ControlPanel v-model:url="url" v-model:apiKey="apiKey" :loading="loading" @run="run" />
+  <ControlPanel v-model:url="url" :loading="loading" @run="run" />
 
   <!-- cargando -->
   <div v-if="loading" class="loading">

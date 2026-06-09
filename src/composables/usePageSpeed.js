@@ -272,7 +272,6 @@ function friendly(err) {
 
 export function usePageSpeed() {
   const url = ref('')
-  const apiKey = ref('')
   const view = ref('mobile') // estrategia que se está mostrando
   const loading = ref(false)
   const generalError = ref('')
@@ -284,15 +283,12 @@ export function usePageSpeed() {
   const hasAny = computed(() => !!(results.value.mobile || results.value.desktop))
 
   async function fetchStrategy(target, strat) {
-    const endpoint = new URL('https://www.googleapis.com/pagespeedonline/v5/runPagespeed')
+    // Llamamos a nuestro propio Worker, que añade la API key (secret) del lado servidor.
+    const endpoint = new URL('/api/analyze', window.location.origin)
     endpoint.searchParams.set('url', target)
     endpoint.searchParams.set('strategy', strat)
-    ;['performance', 'accessibility', 'best-practices', 'seo'].forEach((c) =>
-      endpoint.searchParams.append('category', c),
-    )
-    if (apiKey.value) endpoint.searchParams.set('key', apiKey.value.trim())
 
-    const res = await fetch(endpoint.toString())
+    const res = await fetch(endpoint)
     const data = await res.json()
     if (!res.ok || data.error) {
       throw new Error(data.error?.message || `HTTP ${res.status}`)
@@ -328,7 +324,6 @@ export function usePageSpeed() {
 
   return {
     url,
-    apiKey,
     view,
     loading,
     generalError,

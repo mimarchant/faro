@@ -3,5 +3,11 @@ dist
 dist-ssr
 *.local
 .DS_Store
+
+# secrets locales del Worker — NUNCA commitear
+.dev.vars
 .env
 .env.local
+
+# artefactos de wrangler
+.wrangler

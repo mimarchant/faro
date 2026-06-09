@@ -1,7 +1,10 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { cloudflare } from '@cloudflare/vite-plugin'
 
-// https://vitejs.dev/config/
+// El plugin de Cloudflare corre el Worker en el runtime de Workers durante
+// `npm run dev`, con HMR de Vite y los bindings emulados (incluido el secret de .dev.vars).
+// https://developers.cloudflare.com/workers/vite-plugin/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), cloudflare()],
 })

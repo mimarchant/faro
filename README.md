@@ -24,12 +24,6 @@ Abre la URL que imprime Vite (por defecto `http://localhost:5173`).
 3. Revisa scores, Core Web Vitals (laboratorio), datos reales de CrUX y oportunidades.
 4. **Exportar para IA**: descarga el `.md` o copia al portapapeles. El informe incluye un prompt orientado al stack Vue 3 / Vite / Modyo.
 
-## API key (recomendada)
-
-Sin key funciona, pero Google limita mucho la cuota (errores 429). Crea una gratis en
-[Google Cloud → PageSpeed Insights API](https://developers.google.com/speed/docs/insights/v5/get-started)
-y pégala en el desplegable de la app. No se persiste: vive solo en memoria de la pestaña.
-
 ## Estructura
 
 ```
